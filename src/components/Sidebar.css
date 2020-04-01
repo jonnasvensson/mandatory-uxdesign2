@@ -1,0 +1,42 @@
+.Sidebar {
+    width: 200px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    box-shadow: 7px 0px 17px 0px rgba(0, 0, 0, 0.75);
+    transform: translateX(0);
+    transition: all 0.2s linear;
+    z-index: 99;
+}
+
+.Sidebar--closed {
+    box-shadow: none;
+    transform: translateX(-200px);
+    visibility: hidden;
+}
+
+.Sidebar__mask {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.Sidebar__mask:focus-within {
+    box-shadow: inset 0px 0px 0px 4px cyan;
+}
+
+.Sidebar__mask-button {
+    border: none;
+    width: 1px;
+    height: 1px;
+    margin-left: -20px;
+}

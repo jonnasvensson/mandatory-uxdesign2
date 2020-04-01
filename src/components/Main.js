@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import './Main.scss'
-import Quiz from './Quiz'
+import Nav from 'react-bootstrap/Nav'
 
-import { Button } from 'react-bootstrap';
+import './Main.css'
+import './Sidebar.css'
+
+import Header from './Header'
+import Sidebar from './Sidebar'
+import Quiz from './Quiz'
 
 
 export default function Main() {
-    const [showQuiz, setshowQuiz] = useState(false);
-    
-    const handleClick = () => {
-        console.log('click');
-        setshowQuiz( true );
+    const [isOpen, setIsOpen] = useState(false);
+
+    const onClickMenuButton = () => {
+        setIsOpen(true);
+        console.log(isOpen);
     }
 
     return (
         <>
-            <div className="container d-flex justify-content-center align-items-center">
-                {
-                    showQuiz ? <Quiz/> : <Button variant="outline-secondary" onClick={handleClick}>Start Quiz</Button>
-                }
-            </div>
+            <Header onClickMenuButton={onClickMenuButton} />
+            <Sidebar isOpen={isOpen} onClose={() => setIsOpen(false)}/>
         </>
     )
 }
+

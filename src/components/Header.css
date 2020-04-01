@@ -1,0 +1,34 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    position: relative;
+}
+
+Button {
+    top: 52px;
+}
+
+.header__menu-button {
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: 10px;
+    top: 52;
+}
+
+.header__menu-button:hover {
+    background-color: grey;
+    opacity: 0.5;
+}
+
+.header__menu-icon {
+    color: #D0850B;
+}
+
+h1 {
+    width: 80%;
+    border-bottom: 2px solid grey;
+    text-align: center;
+}
