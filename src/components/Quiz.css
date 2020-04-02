@@ -1,3 +1,27 @@
+.btn {
+    margin: 20px;
+    margin-bottom: 50px;
+    border: none;
+    background-color: var(--icon-color);
+    color: var(--background-color);
+    font-family: 'Roboto';
+}
+
+.btn:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+.btn:focus {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    outline: 2px solid white;
+}
+
+#demo-one-modal {
+    display: block;
+}
+
 .container {
     margin-top: 50px;
 }
@@ -10,16 +34,21 @@
     color: var(--text-color);
 }
 
-h3 {
-    font-family: var(--body-font);
-}
-
 .card-text {
     font-family: var(--header-body);
+    margin: 20px;
 }
 
 .card-text:focus {
     outline: 2px solid white;
+}
+
+h3 {
+    font-family: var(--body-font);
+}
+
+input {
+    cursor: pointer;
 }
 
 input:focus {
@@ -45,28 +74,4 @@ input:focus {
 #start-btn:focus {
     background-color: var(--text-color);
     color: var(--background-color);
-}
-
-.btn {
-    margin: 20px;
-    margin-bottom: 50px;
-    border: none;
-    background-color: var(--icon-color);
-    color: var(--background-color);
-    font-family: 'Roboto';
-}
-
-.btn:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
-}
-
-.btn:focus {
-    background-color: var(--text-color);
-    color: var(--background-color);
-    outline: 2px solid white;
-}
-
-#demo-one-modal {
-    display: block;
 }

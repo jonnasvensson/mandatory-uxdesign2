@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
-import Nav from 'react-bootstrap/Nav'
 
 import './Main.css'
 import './Sidebar.css'
 
 import Header from './Header'
 import Sidebar from './Sidebar'
-import Quiz from './Quiz'
 
 
 export default function Main() {

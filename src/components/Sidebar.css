@@ -1,3 +1,31 @@
+    label {
+        margin-bottom: 0px;
+    }
+    
+    .nav-item {
+        width: 200px;
+        margin: 50px;
+        position: relative;
+    }
+    
+    .nav-link:focus {
+        outline: 2px solid white;
+    }
+    
+    .nav-link {
+        color: var(--background-color);
+        border-bottom: 1px solid var(--background-color);
+        font-family: 'Playfair Display';
+        font-size: 30px;
+        margin-left: 20px;
+    }
+    
+    #icon-menu {
+        position: absolute;
+        bottom: 14px;
+        font-size: 34px;
+    }
+    
     .Sidebar {
         width: 300px;
         background-color: var(--text-color);
@@ -10,10 +38,6 @@
         transition: all 0.2s linear;
         z-index: 99;
         border-bottom-right-radius: 30px;
-    }
-    
-    label {
-        margin-bottom: 0px;
     }
     
     .Sidebar--closed {
@@ -45,20 +69,4 @@
         width: 1px;
         height: 1px;
         margin-left: -20px;
-    }
-    
-    .nav-item {
-        width: 200px;
-        margin: 50px;
-    }
-    
-    .nav-link:focus {
-        outline: 2px solid white;
-    }
-    
-    .nav-link {
-        color: var(--background-color);
-        border-bottom: 1px solid var(--background-color);
-        font-family: 'Playfair Display';
-        font-size: 30px;
     }

@@ -23,12 +23,21 @@ export default function Sidebar({ isOpen, onClose }) {
                 <aside className={className}>
                     <Nav activeKey="/home" className="d-flex flex-column align-items-center justify-content-center">
                         <Nav.Item>
+                            <span class="material-icons" id="icon-menu">
+                                contact_support
+                            </span>
                             <Nav.Link href="/">Quiz</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
+                            <span class="material-icons" id="icon-menu">
+                                bar_chart
+                        </span>
                             <Nav.Link href="/stats">Stats</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
+                            <span class="material-icons" id="icon-menu">
+                                info
+                        </span>
                             <Nav.Link href="/about">About</Nav.Link>
                         </Nav.Item>
                     </Nav>

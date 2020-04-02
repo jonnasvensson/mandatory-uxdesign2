@@ -16,7 +16,6 @@ export default function Quiz() {
     const [modalActive, setmodalActive] = useState(false);
     const [currentScore, setCurrentScore] = useState(null);
     const [showQuiz, setshowQuiz] = useState(false);
-//    const [stats, updateStats] = useState(result$.value);
 
     const defaultValues = {
         '0': '',
@@ -40,6 +39,8 @@ export default function Quiz() {
     const handleExit = () => {
         deactivateModal();
         updateResultsFromLocalStorage(null);
+        reset(defaultValues);
+        setshowQuiz(false);
     }
 
     const handleRestart = () => {
@@ -54,45 +55,32 @@ export default function Quiz() {
         let score = checkAnswers(data);
         setCurrentScore(score);
         setmodalActive(true);
-        console.log(currentScore);
-        
     };
 
 
     function checkAnswers(answers) {
-        console.log('ANSWERS', answers);
         let count = 0;
-        console.log(count);
 
         for (let i = 0; i < trivia.length; i++) {
             if (trivia[i].correct_answer === answers[i]) {
                 count++;
             }
         }
-        console.log(count);
-        console.log(result$);
-        
-        let newResults = {...result$.value};  // --> updatedResult from localstorage.
+
+        let newResults = { ...result$.value };  // --> updatedResult from localstorage.
         newResults.gamesPlayed++;
         newResults.correctAnswers += count;
         newResults.incorrectAnswers += trivia.length - count;
         updateResultsFromLocalStorage(newResults);
-        console.log(newResults);
         return count;
     }
 
-    console.log(modalActive);
-
-
-
     function handleAxios() {
         axios
-            .get("https://opentdb.com/api.php?amount=10&type=boolean")
+            .get("https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple")
             .then((respons) => {
                 setTrivia(respons.data.results);
-                console.log(respons.data.results);
             })
-
             .catch(error => {
                 console.log(error);
             })
@@ -112,7 +100,7 @@ export default function Quiz() {
         let concatinatedAnswers = correct.concat(incorrect);
         number++;
 
-        //concatinatedAnswers.sort(() => Math.random() -0.5); 
+        concatinatedAnswers.sort(() => Math.random() - 0.5);
 
         const entities = {
             '&#039;': "'",
@@ -133,8 +121,10 @@ export default function Quiz() {
                             const uniqueKey = `${nr}${j}`;
                             return (
                                 <React.Fragment key={uniqueKey}>
-                                    <input type="radio" tabIndex="1" required aria-label={option} aria-required="true" id={nr + option} name={i} value={option} ref={register({ required: true })} reset={defaultValues} />
-                                    <label htmlFor="answer">{option}</label>
+                                    <Card.Text>
+                                        <input type="radio" tabIndex="1" required aria-label={option} id={nr + option} name={i} value={option} ref={register({ required: true })} reset={defaultValues} />
+                                        <label htmlFor="answer">{option}</label>
+                                    </Card.Text>
                                 </React.Fragment>
                             )
                         })
@@ -162,63 +152,10 @@ export default function Quiz() {
                     </form>
                     {modalActive ? <Dialog currentScore={currentScore} handleRestart={handleRestart} handleExit={handleExit} deactivateModal={deactivateModal} setmodalActive={setmodalActive} /> : null}
                 </div> : <div className="container d-flex flex-column align-items-center">
-                            <Button id="start-btn" onClick={() => setshowQuiz(true)}>
-                                <h4>Start quiz</h4></Button>
-                        </div>
+                    <Button id="start-btn" onClick={() => setshowQuiz(true)}>
+                        <h4>Start quiz</h4></Button>
+                </div>
             }
         </>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    const Dialog = ( {currentScore} ) => {
-        return (
-                <AriaModal
-                    titleText="demo one"
-                    onExit={deactivateModal}
-                    initialFocus="#demo-one-deactivate"
-                    underlayStyle={{ paddingTop: '2em' }}
-                >
-                    <div id="demo-one-modal" className="modal" style={{display: "block"}}>
-                        <div className="modal-body">
-                            <Card>
-                                <Card.Body>
-                                    <h2>Results</h2>
-                                    <p>Your total score from the quiz is: {currentScore} </p>
-                                    <div className="container d-flex justify-content-between">
-                                    <Button id="demo-one-deactivate" onClick={deactivateModal}>
-                                        Close
-                                    </Button>
-                                    <Button id="demo-one-deactivate" onClick={handleRestart} >
-                                        Restart quiz
-                                    </Button>
-                                    </div>
-                                </Card.Body>
-                            </Card>
-                        </div>
-                    </div>
-                </AriaModal>
-        )
-    } */

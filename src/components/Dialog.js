@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Card from 'react-bootstrap/Card'
 import AriaModal from 'react-aria-modal';
@@ -20,7 +20,7 @@ export default function Dialog({ currentScore, deactivateModal, handleExit, hand
                     <Card>
                         <Card.Body>
                             <h2>Results</h2>
-                            <p>Your total score from the quiz is: {currentScore} </p>
+                            <p>Your total score is: {currentScore} </p>
                             <div className="container d-flex justify-content-between">
                                 <Button id="demo-one-deactivate" onClick={handleExit}>
                                     Close

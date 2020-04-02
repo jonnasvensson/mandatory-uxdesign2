@@ -18,11 +18,11 @@ export default function Stats() {
                 <Card.Body as="ul" variant="flush" >
                     <Card.Title className="text-center" aria-label="Stats" tabIndex="1"><h3 style={{fontFamily: 'Roboto'}}>Stats</h3></Card.Title>
                     <Card.Text aria-label="Games played" tabIndex="1">Games played</Card.Text>
-                    <Card.Text aria-label="Stats" tabIndex="1">{result$.value.gamesPlayed}</Card.Text>
+                    <Card.Text aria-label={result$.value.gamesPlayed} tabIndex="1">{result$.value.gamesPlayed}</Card.Text>
                     <Card.Text aria-label="Correct answers" tabIndex="1">Correct answers</Card.Text>
-                    <Card.Text aria-label="Stats" tabIndex="1">{result$.value.correctAnswers}</Card.Text>
-                    <Card.Text aria-label tabIndex="1">Incorrect answers</Card.Text>
-                    <Card.Text aria-label="Incorrect answers" tabIndex="1" >{result$.value.incorrectAnswers}</Card.Text>
+                    <Card.Text aria-label={result$.value.correctAnswers} tabIndex="1">{result$.value.correctAnswers}</Card.Text>
+                    <Card.Text aria-label="Incorrect answers" tabIndex="1">Incorrect answers</Card.Text>
+                    <Card.Text aria-label={result$.value.incorrectAnswers} tabIndex="1" >{result$.value.incorrectAnswers}</Card.Text>
                 </Card.Body>
             </Card>
         </div>
