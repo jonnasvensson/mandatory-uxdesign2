@@ -8,7 +8,11 @@ export default function Header({ onClickMenuButton }) {
             <button className="header__menu-button" onClick={onClickMenuButton} aria-label="Open menu" >
                 <i className="header__menu-icon material-icons">menu</i>
             </button>
-            <h1>Quiz</h1>
+            <div className="logo">
+                <div className="logo__inner"></div>
+                <div className="logo__tail"></div>
+            </div>
+            <h1>uiz</h1>
         </header>
     )
 }

@@ -21,7 +21,7 @@ export default function Sidebar({ isOpen, onClose }) {
                     </label>
                 )}
                 <aside className={className}>
-                    <Nav activeKey="/home" className="flex-column">
+                    <Nav activeKey="/home" className="d-flex flex-column align-items-center justify-content-center">
                         <Nav.Item>
                             <Nav.Link href="/">Quiz</Nav.Link>
                         </Nav.Item>

@@ -1,0 +1,11 @@
+:root {
+    --background-color: #09131B;
+    --text-color: #C3A54B;
+    --icon-color: #A44537;
+    --header-font: 'Playfair Display';
+    --body-font: 'Roboto';
+}
+
+body {
+    background-color: var(--background-color);
+}

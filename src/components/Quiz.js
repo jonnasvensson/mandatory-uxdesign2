@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form'
 import axios from 'axios';
 
+import './Quiz.css'
+
 import Button from 'react-bootstrap/Button'
-import ListGroup from 'react-bootstrap/ListGroup'
 import Card from 'react-bootstrap/Card'
-import Container from 'react-bootstrap/Container'
 import Dialog from './Dialog'
+import { updateResultsFromLocalStorage, result$ } from './Store'
 
 
 export default function Quiz() {
@@ -15,6 +16,7 @@ export default function Quiz() {
     const [modalActive, setmodalActive] = useState(false);
     const [currentScore, setCurrentScore] = useState(null);
     const [showQuiz, setshowQuiz] = useState(false);
+//    const [stats, updateStats] = useState(result$.value);
 
     const defaultValues = {
         '0': '',
@@ -46,10 +48,10 @@ export default function Quiz() {
         e.preventDefault();
         setAnswer(data);
         let score = checkAnswers(data);
-        console.log(currentScore);
         setCurrentScore(score);
-        console.log(currentScore);
         setmodalActive(true);
+        console.log(currentScore);
+        
     };
 
 
@@ -59,13 +61,19 @@ export default function Quiz() {
         console.log(count);
 
         for (let i = 0; i < trivia.length; i++) {
-            console.log('CORRECT', trivia[i].correct_answer);
             if (trivia[i].correct_answer === answers[i]) {
                 count++;
-                console.log('correct', count);
             }
         }
         console.log(count);
+        console.log(result$);
+        
+        let newResults = {...result$.value};  // --> updatedResult from localstorage.
+        newResults.gamesPlayed++;
+        newResults.correctAnswers += count;
+        newResults.inCorrectAnswers += trivia.length - count;
+        updateResultsFromLocalStorage(newResults);
+        console.log(newResults);
         return count;
     }
 
@@ -111,15 +119,14 @@ export default function Quiz() {
         }
         return (
             <>
-            <Card.Text as="li" tabIndex="1" action href={questions.question} key={nr} aria-label={questions.question} aria-required="true"> {questions.question.replace(/&#?\w+;/g, match => entities[match])}
-            </Card.Text>
+                <Card.Text as="li" tabIndex="1" action="true" href={questions.question} key={nr} aria-label={questions.question} aria-required="true"> {questions.question.replace(/&#?\w+;/g, match => entities[match])}</Card.Text>
                 <div>
                     {
                         concatinatedAnswers.map((option, j) => {
                             const uniqueKey = `${nr}${j}`;
                             return (
                                 <React.Fragment key={uniqueKey}>
-                                    <input type="radio" aria-label={option} aria-required="true" id={nr + option} name={i} value={option} ref={register({ required: true })} reset={defaultValues} />
+                                    <input type="radio" tabIndex="1" required aria-label={option} aria-required="true" id={nr + option} name={i} value={option} ref={register({ required: true })} reset={defaultValues} />
                                     <label htmlFor="answer">{option}</label>
                                 </React.Fragment>
                             )
@@ -134,18 +141,23 @@ export default function Quiz() {
     return (
         <>
             {showQuiz ?
-                <div className="container d-flex flex-column justify-content-center">
-                    <h2 className="text-center">questions!</h2>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <Card role="list" style={{ width: '24rem' }}>
-                                <Card.Body  as="ul" variant="flush" >
-                                    {mappedTrivia}
-                                </Card.Body>
-                            </Card>
+                <div className="container d-flex flex-column align-items-center">
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <Card role="list" >
+                            <Card.Body as="ul" variant="flush" >
+                                <Card.Title className="text-center">Questions</Card.Title>
+                                {mappedTrivia}
+                            </Card.Body>
+                        </Card>
+                        <div className="container d-flex flex-column align-items-center" >
                             <Button variant="info" type="submit" ref={register} onClick={handleSubmit}>Submit</Button>{' '}
-                        </form>
+                        </div>
+                    </form>
                     {modalActive ? <Dialog currentScore={currentScore} handleRestart={handleRestart} deactivateModal={deactivateModal} setmodalActive={setmodalActive} /> : null}
-                </div> : <Button onClick={() => setshowQuiz(true)}>Start quiz</Button>
+                </div> : <div className="container d-flex flex-column align-items-center">
+                            <Button id="start-btn" onClick={() => setshowQuiz(true)}>
+                                <h4>Start quiz</h4></Button>
+                        </div>
             }
         </>
     )

@@ -1,5 +1,66 @@
+.container {
+    margin-top: 50px;
+}
+
+.card {
+    max-height: auto;
+    width: 24rem;
+    background-color: var(--background-color);
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.card-text {
+    font-family: var(--header-body);
+}
+
+.card-text:focus {
+    outline: 2px solid white;
+}
+
+input:focus {
+    outline: 2px solid white;
+}
+
+#start-btn {
+    margin-bottom: 50px;
+    border: none;
+    width: 300px;
+    height: 100px;
+    background-color: var(--icon-color);
+    color: var(--background-color);
+    font-family: 'Roboto';
+    font-weight: 100;
+}
+
+#start-btn:hover+ {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+#start-btn:focus {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
 .btn {
-    margin-bottom: 20px;
+    margin: 20px;
+    margin-bottom: 50px;
+    border: none;
+    background-color: var(--icon-color);
+    color: var(--background-color);
+    font-family: 'Roboto';
+}
+
+.btn:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+.btn:focus {
+    background-color: var(--text-color);
+    color: var(--background-color);
+    outline: 2px solid white;
 }
 
 #demo-one-modal {
