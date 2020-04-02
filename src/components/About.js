@@ -8,7 +8,7 @@ export default function About() {
         <div className="container d-flex flex-column align-items-center">
             <Card role="list" style={{ width: '24rem' }}>
                 <Card.Body as="ul" variant="flush" >
-                <Card.Title className="text-center">About</Card.Title>
+                <Card.Title className="text-center"><h3 style={{fontFamily: 'Roboto'}}>About</h3></Card.Title>
                     <Card.Text>
                         A quiz is a form of game or mind sport, 
                         in which the players (as individuals or in teams) 

@@ -1,0 +1,12 @@
+.modal {
+    background: rgb(214, 206, 206, 0.5);
+}
+
+.modal-body {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.card {
+    width: 100%;
+}

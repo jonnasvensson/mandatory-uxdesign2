@@ -37,8 +37,12 @@ export default function Quiz() {
         setmodalActive(false);
     }
 
+    const handleExit = () => {
+        deactivateModal();
+        updateResultsFromLocalStorage(null);
+    }
+
     const handleRestart = () => {
-        console.log('Restart clicked');
         handleAxios();
         deactivateModal();
         reset(defaultValues);
@@ -83,7 +87,7 @@ export default function Quiz() {
 
     function handleAxios() {
         axios
-            .get("https://opentdb.com/api.php?amount=3&type=boolean")
+            .get("https://opentdb.com/api.php?amount=10&type=boolean")
             .then((respons) => {
                 setTrivia(respons.data.results);
                 console.log(respons.data.results);
@@ -148,7 +152,7 @@ export default function Quiz() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Card role="list" >
                             <Card.Body as="ul" variant="flush" >
-                                <Card.Title className="text-center" aria-label="Questions" tabIndex="1">Questions</Card.Title>
+                                <Card.Title className="text-center" aria-label="Questions" tabIndex="1"><h3>Questions</h3></Card.Title>
                                 {mappedTrivia}
                             </Card.Body>
                         </Card>
@@ -156,7 +160,7 @@ export default function Quiz() {
                             <Button variant="info" type="submit" ref={register} onClick={handleSubmit}>Submit</Button>{' '}
                         </div>
                     </form>
-                    {modalActive ? <Dialog currentScore={currentScore} handleRestart={handleRestart} deactivateModal={deactivateModal} setmodalActive={setmodalActive} /> : null}
+                    {modalActive ? <Dialog currentScore={currentScore} handleRestart={handleRestart} handleExit={handleExit} deactivateModal={deactivateModal} setmodalActive={setmodalActive} /> : null}
                 </div> : <div className="container d-flex flex-column align-items-center">
                             <Button id="start-btn" onClick={() => setshowQuiz(true)}>
                                 <h4>Start quiz</h4></Button>
