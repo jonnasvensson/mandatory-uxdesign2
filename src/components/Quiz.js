@@ -71,7 +71,7 @@ export default function Quiz() {
         let newResults = {...result$.value};  // --> updatedResult from localstorage.
         newResults.gamesPlayed++;
         newResults.correctAnswers += count;
-        newResults.inCorrectAnswers += trivia.length - count;
+        newResults.incorrectAnswers += trivia.length - count;
         updateResultsFromLocalStorage(newResults);
         console.log(newResults);
         return count;
@@ -98,12 +98,15 @@ export default function Quiz() {
         handleAxios();
     }, [])
 
+    let number = 0;
+
     const mappedTrivia = trivia.map((questions, i) => {
         const nr = i += 0;
         let correct = [];
         correct.push(questions.correct_answer);
         let incorrect = questions.incorrect_answers;
         let concatinatedAnswers = correct.concat(incorrect);
+        number++;
 
         //concatinatedAnswers.sort(() => Math.random() -0.5); 
 
@@ -119,7 +122,7 @@ export default function Quiz() {
         }
         return (
             <>
-                <Card.Text as="li" tabIndex="1" action="true" href={questions.question} key={nr} aria-label={questions.question} aria-required="true"> {questions.question.replace(/&#?\w+;/g, match => entities[match])}</Card.Text>
+                <Card.Text as="li" tabIndex="1" action="true" href={questions.question} key={nr} aria-label={questions.question} aria-required="true">{number}. {questions.question.replace(/&#?\w+;/g, match => entities[match])}</Card.Text>
                 <div>
                     {
                         concatinatedAnswers.map((option, j) => {
@@ -145,7 +148,7 @@ export default function Quiz() {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Card role="list" >
                             <Card.Body as="ul" variant="flush" >
-                                <Card.Title className="text-center">Questions</Card.Title>
+                                <Card.Title className="text-center" aria-label="Questions" tabIndex="1">Questions</Card.Title>
                                 {mappedTrivia}
                             </Card.Body>
                         </Card>

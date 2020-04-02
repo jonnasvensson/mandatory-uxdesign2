@@ -19,7 +19,7 @@ export default function Dialog({ currentScore, deactivateModal, handleRestart })
                             <p>Your total score from the quiz is: {currentScore} </p>
                             <div className="container d-flex justify-content-between">
                                 <Button id="demo-one-deactivate" onClick={deactivateModal}>
-                                    Close
+                                    Exit game!
                             </Button>
                                 <Button id="demo-one-deactivate" onClick={handleRestart} >
                                     Restart quiz

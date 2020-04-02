@@ -10,14 +10,13 @@ export default function About() {
                 <Card.Body as="ul" variant="flush" >
                 <Card.Title className="text-center">About</Card.Title>
                     <Card.Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        Duis aute irure dolor in reprehenderit in voluptate velit
-                        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                        occaecat cupidatat non proident, sunt in culpa qui officia
-                        deserunt mollit anim id est laborum.
+                        A quiz is a form of game or mind sport, 
+                        in which the players (as individuals or in teams) 
+                        attempt to answer questions correctly. 
+                        It is a game to test the knowledge about a certain subject. 
+                        In some countries, a quiz is also a brief assessment used 
+                        in education and similar fields to measure growth in knowledge, 
+                        abilities, and/or skills.
                     </Card.Text>
                 </Card.Body>
             </Card>
